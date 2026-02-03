@@ -1,16 +1,21 @@
 package org.estudos.spring.entities;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Objects;
 
+@Document(collection = "tb_user")
 public class User {
 
+    @Id
     private String id;
-    private String nome;
+    private String name;
     private String email;
 
-    public User(String id, String nome, String email) {
+    public User(String id, String name, String email) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.email = email;
     }
 
@@ -25,12 +30,12 @@ public class User {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
