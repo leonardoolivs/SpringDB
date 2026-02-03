@@ -18,23 +18,30 @@ public class UserController {
     private UserService service;
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
-       List<User> users = service.findAll();
+    public ResponseEntity<List<User>> findAll() {
+        List<User> users = service.findAll();
 
-       return ResponseEntity.ok().body(users);
+        return ResponseEntity.ok().body(users);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable String id){
+    public ResponseEntity<User> findById(@PathVariable String id) {
         User user = service.findById(id);
 
         return ResponseEntity.ok().body(user);
     }
 
     @PostMapping
-    public ResponseEntity<User> create(@RequestBody User user){
+    public ResponseEntity<User> create(@RequestBody User user) {
         user = service.create(user);
 
         return ResponseEntity.ok().body(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        service.delete(id);
+
+        return ResponseEntity.noContent().build();
     }
 }

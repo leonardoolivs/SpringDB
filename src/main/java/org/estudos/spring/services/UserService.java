@@ -29,4 +29,10 @@ public class UserService {
 
         return repo.save(user);
     }
+
+    public void delete(String id){
+        Optional<User> user = repo.findById(id);
+
+        repo.deleteById(id);
+    }
 }
