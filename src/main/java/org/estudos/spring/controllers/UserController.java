@@ -1,5 +1,6 @@
 package org.estudos.spring.controllers;
 
+import jakarta.websocket.server.PathParam;
 import org.apache.coyote.Response;
 import org.estudos.spring.entities.User;
 import org.estudos.spring.services.UserService;
@@ -43,5 +44,12 @@ public class UserController {
         service.delete(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> update(@RequestBody User user, @PathVariable String id){
+        user = service.update(id, user);
+
+        return ResponseEntity.ok().body(user);
     }
 }
