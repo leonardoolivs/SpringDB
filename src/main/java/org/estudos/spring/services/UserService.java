@@ -24,4 +24,9 @@ public class UserService {
 
         return user.orElseThrow(() -> new ObjectNotFoundException(id));
     }
+
+    public User create(User user){
+
+        return repo.save(user);
+    }
 }
